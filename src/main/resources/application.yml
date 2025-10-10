@@ -1,0 +1,30 @@
+server:
+  servlet:
+    context-path: /api
+  shutdown: graceful
+  port: 8080
+
+spring:
+  application:
+    name: spring-project-template
+  main:
+    banner-mode: off
+    log-startup-info: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_batch_fetch_size: 1000
+    show-sql: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 30
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
