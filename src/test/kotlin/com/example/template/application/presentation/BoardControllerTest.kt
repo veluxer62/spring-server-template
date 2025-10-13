@@ -163,13 +163,14 @@ class BoardControllerTest : FunctionalTestBase() {
                 // Then
                 actual.statusCode shouldBe HttpStatus.OK
                 assertSoftly(actual.body!!) {
-                    it.content.map { b -> b.title } shouldContainInOrder listOf(
-                        "게시판 목록 제목5",
-                        "게시판 목록 제목4",
-                        "게시판 목록 제목3",
-                        "게시판 목록 제목2",
-                        "게시판 목록 제목1",
-                    )
+                    it.content.map { b -> b.title } shouldContainInOrder
+                        listOf(
+                            "게시판 목록 제목5",
+                            "게시판 목록 제목4",
+                            "게시판 목록 제목3",
+                            "게시판 목록 제목2",
+                            "게시판 목록 제목1",
+                        )
                     it.totalElements shouldBeGreaterThanOrEqualTo 5
                     it.page shouldBe 0
                     it.size shouldBe 20
@@ -179,12 +180,14 @@ class BoardControllerTest : FunctionalTestBase() {
 
             test("필터가 주어지면 올바른 게시판 목록을 조회한다.") {
                 // Given
-                val url = UriComponentsBuilder.newInstance()
-                    .path("/boards")
-                    .queryParam("title", "게시판 목록")
-                    .queryParam("content", "내용3")
-                    .build()
-                    .toString()
+                val url =
+                    UriComponentsBuilder
+                        .newInstance()
+                        .path("/boards")
+                        .queryParam("title", "게시판 목록")
+                        .queryParam("content", "내용3")
+                        .build()
+                        .toString()
 
                 // When
                 val actual = client.getForEntity(url, typeRef<PageResponse<BoardResponse>>())
@@ -202,13 +205,15 @@ class BoardControllerTest : FunctionalTestBase() {
 
             test("필터와 페이징이 주어지면 올바른 게시판 목록을 조회한다.") {
                 // Given
-                val url = UriComponentsBuilder.newInstance()
-                    .path("/boards")
-                    .queryParam("title", "게시판 목록")
-                    .queryParam("page", "1")
-                    .queryParam("size", "2")
-                    .build()
-                    .toString()
+                val url =
+                    UriComponentsBuilder
+                        .newInstance()
+                        .path("/boards")
+                        .queryParam("title", "게시판 목록")
+                        .queryParam("page", "1")
+                        .queryParam("size", "2")
+                        .build()
+                        .toString()
 
                 // When
                 val actual = client.getForEntity(url, typeRef<PageResponse<BoardResponse>>())
@@ -216,10 +221,11 @@ class BoardControllerTest : FunctionalTestBase() {
                 // Then
                 actual.statusCode shouldBe HttpStatus.OK
                 assertSoftly(actual.body!!) {
-                    it.content.map { b -> b.title } shouldContainExactly listOf(
-                        "게시판 목록 제목3",
-                        "게시판 목록 제목2",
-                    )
+                    it.content.map { b -> b.title } shouldContainExactly
+                        listOf(
+                            "게시판 목록 제목3",
+                            "게시판 목록 제목2",
+                        )
                     it.totalElements shouldBe 5
                     it.page shouldBe 1
                     it.size shouldBe 2

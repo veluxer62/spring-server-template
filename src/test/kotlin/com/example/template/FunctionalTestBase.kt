@@ -39,6 +39,6 @@ abstract class FunctionalTestBase : FunSpec() {
 
     protected fun <T : Any> TestRestTemplate.getForEntity(
         url: String,
-        responseType: ParameterizedTypeReference<T>
+        responseType: ParameterizedTypeReference<T>,
     ): ResponseEntity<T> = this.exchange(url, HttpMethod.GET, null, responseType)
 }

@@ -57,7 +57,8 @@ class BoardController(
     ): PageResponse<BoardResponse> {
         val filter = BoardFilter(title, content)
 
-        return boardFacade.getAllByFilter(filter, pageable)
+        return boardFacade
+            .getAllByFilter(filter, pageable)
             .map { it.toResponse() }
             .toResponse()
     }

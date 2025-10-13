@@ -20,5 +20,8 @@ class BoardFacade(
 
     fun deleteById(id: UUID) = boardService.deleteById(id)
 
-    fun getAllByFilter(filter: BoardFilter, pageable: Pageable) = boardService.getAllByFilter(filter, pageable)
+    fun getAllByFilter(
+        filter: BoardFilter,
+        pageable: Pageable,
+    ) = boardService.getAllByFilter(filter, pageable)
 }
