@@ -78,3 +78,7 @@ src/
 ├── build.gradle.kts                   # 의존성 설정
 └── docker-compose.yml                 # Docker compose 설정
 ```
+
+## Other Templates
+
+- [GraphQL Server Template](https://github.com/veluxer62/spring-server-template-with-graphql)
